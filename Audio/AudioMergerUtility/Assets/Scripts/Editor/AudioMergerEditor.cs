@@ -14,7 +14,7 @@ namespace Editor
 
         private SerializedProperty _soundToMerge;
         private SerializedProperty _mergingButton;
-        
+        private SerializedProperty _fadeTimeSeconds;
         #endregion
         
         private GUIStyle _titleStyle;
@@ -25,6 +25,7 @@ namespace Editor
         {
             _soundToMerge = serializedObject.FindProperty("soundToMerge");
             _mergingButton = serializedObject.FindProperty("mergingButton");
+            _fadeTimeSeconds = serializedObject.FindProperty("fadeTimeSeconds");
         }
 
         public override void OnInspectorGUI()
@@ -54,6 +55,8 @@ namespace Editor
             EditorGUILayout.PropertyField(_soundToMerge);
             GUILayout.Space(5f);
             EditorGUILayout.PropertyField(_mergingButton);
+            GUILayout.Space(5f);
+            EditorGUILayout.PropertyField(_fadeTimeSeconds);
 
             serializedObject.ApplyModifiedProperties();
         }
