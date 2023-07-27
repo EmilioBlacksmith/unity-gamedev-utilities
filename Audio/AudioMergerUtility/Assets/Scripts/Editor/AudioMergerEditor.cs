@@ -3,18 +3,20 @@ using System;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using Utils.Audio_Merger_Tool;
 
 namespace Editor
 {
     [CustomEditor(typeof(AudioMerger)), CanEditMultipleObjects]
     public class AudioMergerEditor : UnityEditor.Editor
     {
-
         #region Serialized Properties
 
         private SerializedProperty _soundToMerge;
         private SerializedProperty _mergingButton;
         private SerializedProperty _fadeTimeSeconds;
+        private SerializedProperty _isUsingButton;
+        
         #endregion
         
         private GUIStyle _titleStyle;
@@ -26,6 +28,7 @@ namespace Editor
             _soundToMerge = serializedObject.FindProperty("soundToMerge");
             _mergingButton = serializedObject.FindProperty("mergingButton");
             _fadeTimeSeconds = serializedObject.FindProperty("fadeTimeSeconds");
+            _isUsingButton = serializedObject.FindProperty("isUsingButton");
         }
 
         public override void OnInspectorGUI()
@@ -36,27 +39,30 @@ namespace Editor
             _titleStyle = new GUIStyle(GUI.skin.label)
             {
                 alignment = TextAnchor.MiddleCenter,
-                //margin = _rectOffset,
-                //padding = _rectOffset,
                 fontSize = 20,
                 fontStyle = FontStyle.Bold,
                 normal =
                 {
-                    textColor = Color.white,
+                    textColor = Color.white, 
                     background = MakeTex(2,2,_labelColor)
                 },
                 padding = _rectOffset
             };
 
-            GUILayout.Space(5f);
             GUILayout.Box(" Audio Merger", _titleStyle);
-            GUILayout.Space(10f);
+            GUILayout.Space(5f);
 
+            EditorGUILayout.PropertyField(_isUsingButton);
+            GUILayout.Space(5f);
             EditorGUILayout.PropertyField(_soundToMerge);
             GUILayout.Space(5f);
-            EditorGUILayout.PropertyField(_mergingButton);
-            GUILayout.Space(5f);
             EditorGUILayout.PropertyField(_fadeTimeSeconds);
+            
+            if (_isUsingButton.boolValue)
+            {
+                GUILayout.Space(5f);
+                EditorGUILayout.PropertyField(_mergingButton);
+            }
 
             serializedObject.ApplyModifiedProperties();
         }

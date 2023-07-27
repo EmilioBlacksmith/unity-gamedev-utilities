@@ -281,7 +281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundToMerge: {fileID: 8300000, guid: 2ca8ce1243296094b85823b0f47fb6cd, type: 3}
   mergingButton: {fileID: 1620659843}
-  fadeTimeSeconds: 0.5
+  fadeTimeSeconds: 0.3
+  isUsingButton: 1
 --- !u!1 &452638314
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +725,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 200}
+  m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620659843
 MonoBehaviour:
