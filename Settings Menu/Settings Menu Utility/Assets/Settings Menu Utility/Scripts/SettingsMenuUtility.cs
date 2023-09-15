@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SettingsMenuUtilty : MonoBehaviour
+public class SettingsMenuUtility : MonoBehaviour
 {
     [Header("Main Menu")]
     [SerializeField] private bool hideMainMenu = false;
